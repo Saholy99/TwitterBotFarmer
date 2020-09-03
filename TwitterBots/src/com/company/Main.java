@@ -9,7 +9,7 @@ public class Main{
         //Status status = twitter.updateStatus(latestStatus);
         //System.out.println("Successfully updated the status to [" + status.getText() + "].");
 
-        String[] statuses = {"I need a logo", "I will literally pay someone to write this essay", "I need a wedbsite designer"};
+        String[] statuses = {"I need a logo", "I will literally pay someone to write this essay", "I need a website designer", "I need to design a logo", "I need a logo for my website"};
 
         //prints statuses
         for (int i = 0; i < statuses.length; i++) {
@@ -22,11 +22,12 @@ public class Main{
         interval = interval*60000;
         long oldtime = System.currentTimeMillis()-interval;
         long newtime = System.currentTimeMillis();
+        int counter = 0;
         while(true){
             if(newtime - oldtime >= interval){
-                int randomNum = (int) (Math.random()*(statuses.length-1));
-                twitter.updateStatus(statuses[randomNum]);
+                twitter.updateStatus(statuses[counter % 3]);
                 oldtime = System.currentTimeMillis();
+                counter++;
             }
             newtime = System.currentTimeMillis();
         }
